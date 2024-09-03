@@ -1,0 +1,466 @@
+PISA3D
+D:/TimeHistoryAnalysis_regular/Data/Nonlinear_Dynamic_Analysis_WorldGM_TaiwanAdjustedSection_MoreYFeature_BSE-2_0001-0500/structure_5_World_processed\modal.ipt
+kN
+mm
+ControlData    GeometricNL  1
+# Analysis  ModeShape  3  1  2  0.02  0.02
+Analysis  Dynamic  Newmark  XGndMot  1  none  0  ZGndMot  1  0.005  14000  0.21845227  0.00183046376  0
+LoadPattern  GroundAccel  XGndMot  D:/TimeHistoryAnalysis_regular/Data/GroundMotions_World_processed_BSE-2\EQ6953\EQ6953_FN.txt  1  1 
+LoadPattern  GroundAccel  ZGndMot  D:/TimeHistoryAnalysis_regular/Data/GroundMotions_World_processed_BSE-2\EQ6953\EQ6953_FP.txt  1  1 
+GUI_GRID  XDIR  0  7000  14000
+GUI_GRID  YDIR  0  4200  7400  10600  13800
+GUI_GRID  ZDIR  0  8000  16000
+
+
+Node  N1 0 0 0
+Node  N2 0 0 8000
+Node  N3 0 0 16000
+Node  N4 7000 0 0
+Node  N5 7000 0 8000
+Node  N6 7000 0 16000
+Node  N7 14000 0 0
+Node  N8 14000 0 8000
+Node  N9 14000 0 16000
+Node  N10 0 4200 0
+Node  N11 0 4200 8000
+Node  N12 0 4200 16000
+Node  N13 7000 4200 0
+Node  N14 7000 4200 8000
+Node  N15 7000 4200 16000
+Node  N16 14000 4200 0
+Node  N17 14000 4200 8000
+Node  N18 14000 4200 16000
+Node  N19 0 7400 0
+Node  N20 0 7400 8000
+Node  N21 0 7400 16000
+Node  N22 7000 7400 0
+Node  N23 7000 7400 8000
+Node  N24 7000 7400 16000
+Node  N25 14000 7400 0
+Node  N26 14000 7400 8000
+Node  N27 14000 7400 16000
+Node  N28 0 10600 0
+Node  N29 0 10600 8000
+Node  N30 0 10600 16000
+Node  N31 7000 10600 0
+Node  N32 7000 10600 8000
+Node  N33 7000 10600 16000
+Node  N34 14000 10600 0
+Node  N35 14000 10600 8000
+Node  N36 14000 10600 16000
+Node  N37 0 13800 0
+Node  N38 0 13800 8000
+Node  N39 0 13800 16000
+Node  N40 7000 13800 0
+Node  N41 7000 13800 8000
+Node  N42 7000 13800 16000
+Node  N43 14000 13800 0
+Node  N44 14000 13800 8000
+Node  N45 14000 13800 16000
+
+Node  M1F 7000 4200 8000
+Node  M2F 7000 7400 8000
+Node  M3F 7000 10600 8000
+Node  M4F 7000 13800 8000
+
+
+DOF  N1 -1 -1 -1 -1 -1 -1
+DOF  N2 -1 -1 -1 -1 -1 -1
+DOF  N3 -1 -1 -1 -1 -1 -1
+DOF  N4 -1 -1 -1 -1 -1 -1
+DOF  N5 -1 -1 -1 -1 -1 -1
+DOF  N6 -1 -1 -1 -1 -1 -1
+DOF  N7 -1 -1 -1 -1 -1 -1
+DOF  N8 -1 -1 -1 -1 -1 -1
+DOF  N9 -1 -1 -1 -1 -1 -1
+DOF  M1F 0 -1 0 -1 0 -1
+DOF  M2F 0 -1 0 -1 0 -1
+DOF  M3F 0 -1 0 -1 0 -1
+DOF  M4F 0 -1 0 -1 0 -1
+
+
+#NodeMass  Mass  N1 0.0057819 0.0057819 0.0057819 26889 47460 20589
+#NodeMass  Mass  N2 0.0108219 0.0108219 0.0108219 53778 94920 41178
+#NodeMass  Mass  N3 0.0057819 0.0057819 0.0057819 26889 47460 20589
+#NodeMass  Mass  N4 0.0108219 0.0108219 0.0108219 53778 94920 41178
+#NodeMass  Mass  N5 0.0210616 0.0210616 0.0210616 107557 189840 82357
+#NodeMass  Mass  N6 0.0108219 0.0108219 0.0108219 53778 94920 41178
+#NodeMass  Mass  N7 0.0057819 0.0057819 0.0057819 26889 47460 20589
+#NodeMass  Mass  N8 0.0108219 0.0108219 0.0108219 53778 94920 41178
+#NodeMass  Mass  N9 0.0057819 0.0057819 0.0057819 26889 47460 20589
+#NodeMass  Mass  N10 0.0074870 0.0074870 0.0074870 26889 47460 20589
+#NodeMass  Mass  N11 0.0133552 0.0133552 0.0133552 53778 94920 41178
+#NodeMass  Mass  N12 0.0074870 0.0074870 0.0074870 26889 47460 20589
+#NodeMass  Mass  N13 0.0133198 0.0133198 0.0133198 53778 94920 41178
+#NodeMass  Mass  N14 0.0252051 0.0252051 0.0252051 107557 189840 82357
+#NodeMass  Mass  N15 0.0133198 0.0133198 0.0133198 53778 94920 41178
+#NodeMass  Mass  N16 0.0074870 0.0074870 0.0074870 26889 47460 20589
+#NodeMass  Mass  N17 0.0133552 0.0133552 0.0133552 53778 94920 41178
+#NodeMass  Mass  N18 0.0074870 0.0074870 0.0074870 26889 47460 20589
+#NodeMass  Mass  N19 0.0072876 0.0072876 0.0072876 26889 47460 20589
+#NodeMass  Mass  N20 0.0129581 0.0129581 0.0129581 53778 94920 41178
+#NodeMass  Mass  N21 0.0072876 0.0072876 0.0072876 26889 47460 20589
+#NodeMass  Mass  N22 0.0129067 0.0129067 0.0129067 53778 94920 41178
+#NodeMass  Mass  N23 0.0243821 0.0243821 0.0243821 107557 189840 82357
+#NodeMass  Mass  N24 0.0129067 0.0129067 0.0129067 53778 94920 41178
+#NodeMass  Mass  N25 0.0072876 0.0072876 0.0072876 26889 47460 20589
+#NodeMass  Mass  N26 0.0129581 0.0129581 0.0129581 53778 94920 41178
+#NodeMass  Mass  N27 0.0072876 0.0072876 0.0072876 26889 47460 20589
+#NodeMass  Mass  N28 0.0072876 0.0072876 0.0072876 26889 47460 20589
+#NodeMass  Mass  N29 0.0129581 0.0129581 0.0129581 53778 94920 41178
+#NodeMass  Mass  N30 0.0072876 0.0072876 0.0072876 26889 47460 20589
+#NodeMass  Mass  N31 0.0129067 0.0129067 0.0129067 53778 94920 41178
+#NodeMass  Mass  N32 0.0243821 0.0243821 0.0243821 107557 189840 82357
+#NodeMass  Mass  N33 0.0129067 0.0129067 0.0129067 53778 94920 41178
+#NodeMass  Mass  N34 0.0072876 0.0072876 0.0072876 26889 47460 20589
+#NodeMass  Mass  N35 0.0129581 0.0129581 0.0129581 53778 94920 41178
+#NodeMass  Mass  N36 0.0072876 0.0072876 0.0072876 26889 47460 20589
+#NodeMass  Mass  N37 0.0066589 0.0066589 0.0066589 26889 47460 20589
+#NodeMass  Mass  N38 0.0123293 0.0123293 0.0123293 53778 94920 41178
+#NodeMass  Mass  N39 0.0066589 0.0066589 0.0066589 26889 47460 20589
+#NodeMass  Mass  N40 0.0122779 0.0122779 0.0122779 53778 94920 41178
+#NodeMass  Mass  N41 0.0234805 0.0234805 0.0234805 107557 189840 82357
+#NodeMass  Mass  N42 0.0122779 0.0122779 0.0122779 53778 94920 41178
+#NodeMass  Mass  N43 0.0066589 0.0066589 0.0066589 26889 47460 20589
+#NodeMass  Mass  N44 0.0123293 0.0123293 0.0123293 53778 94920 41178
+#NodeMass  Mass  N45 0.0066589 0.0066589 0.0066589 26889 47460 20589
+Mass  M1F 0.1085030 0 0.1085030 0 759360 0
+Mass  M2F 0.1052621 0 0.1052621 0 759360 0
+Mass  M3F 0.1052621 0 0.1052621 0 759360 0
+Mass  M4F 0.0993305 0 0.0993305 0 759360 0
+
+
+LoadPattern  NodalLoad  DL N1 0.00 -56.72 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N1 0.00 -56.72 0.00 0 0 0
+LoadPattern  NodalLoad  DL N2 0.00 -106.16 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N2 0.00 -106.16 0.00 0 0 0
+LoadPattern  NodalLoad  DL N3 0.00 -56.72 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N3 0.00 -56.72 0.00 0 0 0
+LoadPattern  NodalLoad  DL N4 0.00 -106.16 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N4 0.00 -106.16 0.00 0 0 0
+LoadPattern  NodalLoad  DL N5 0.00 -206.61 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N5 0.00 -206.61 0.00 0 0 0
+LoadPattern  NodalLoad  DL N6 0.00 -106.16 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N6 0.00 -106.16 0.00 0 0 0
+LoadPattern  NodalLoad  DL N7 0.00 -56.72 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N7 0.00 -56.72 0.00 0 0 0
+LoadPattern  NodalLoad  DL N8 0.00 -106.16 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N8 0.00 -106.16 0.00 0 0 0
+LoadPattern  NodalLoad  DL N9 0.00 -56.72 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N9 0.00 -56.72 0.00 0 0 0
+LoadPattern  NodalLoad  DL N10 0.00 -73.45 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N10 0.00 -73.45 0.00 0 0 0
+LoadPattern  NodalLoad  DL N11 0.00 -131.01 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N11 0.00 -131.01 0.00 0 0 0
+LoadPattern  NodalLoad  DL N12 0.00 -73.45 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N12 0.00 -73.45 0.00 0 0 0
+LoadPattern  NodalLoad  DL N13 0.00 -130.67 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N13 0.00 -130.67 0.00 0 0 0
+LoadPattern  NodalLoad  DL N14 0.00 -247.26 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N14 0.00 -247.26 0.00 0 0 0
+LoadPattern  NodalLoad  DL N15 0.00 -130.67 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N15 0.00 -130.67 0.00 0 0 0
+LoadPattern  NodalLoad  DL N16 0.00 -73.45 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N16 0.00 -73.45 0.00 0 0 0
+LoadPattern  NodalLoad  DL N17 0.00 -131.01 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N17 0.00 -131.01 0.00 0 0 0
+LoadPattern  NodalLoad  DL N18 0.00 -73.45 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N18 0.00 -73.45 0.00 0 0 0
+LoadPattern  NodalLoad  DL N19 0.00 -71.49 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N19 0.00 -71.49 0.00 0 0 0
+LoadPattern  NodalLoad  DL N20 0.00 -127.12 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N20 0.00 -127.12 0.00 0 0 0
+LoadPattern  NodalLoad  DL N21 0.00 -71.49 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N21 0.00 -71.49 0.00 0 0 0
+LoadPattern  NodalLoad  DL N22 0.00 -126.61 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N22 0.00 -126.61 0.00 0 0 0
+LoadPattern  NodalLoad  DL N23 0.00 -239.19 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N23 0.00 -239.19 0.00 0 0 0
+LoadPattern  NodalLoad  DL N24 0.00 -126.61 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N24 0.00 -126.61 0.00 0 0 0
+LoadPattern  NodalLoad  DL N25 0.00 -71.49 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N25 0.00 -71.49 0.00 0 0 0
+LoadPattern  NodalLoad  DL N26 0.00 -127.12 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N26 0.00 -127.12 0.00 0 0 0
+LoadPattern  NodalLoad  DL N27 0.00 -71.49 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N27 0.00 -71.49 0.00 0 0 0
+LoadPattern  NodalLoad  DL N28 0.00 -71.49 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N28 0.00 -71.49 0.00 0 0 0
+LoadPattern  NodalLoad  DL N29 0.00 -127.12 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N29 0.00 -127.12 0.00 0 0 0
+LoadPattern  NodalLoad  DL N30 0.00 -71.49 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N30 0.00 -71.49 0.00 0 0 0
+LoadPattern  NodalLoad  DL N31 0.00 -126.61 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N31 0.00 -126.61 0.00 0 0 0
+LoadPattern  NodalLoad  DL N32 0.00 -239.19 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N32 0.00 -239.19 0.00 0 0 0
+LoadPattern  NodalLoad  DL N33 0.00 -126.61 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N33 0.00 -126.61 0.00 0 0 0
+LoadPattern  NodalLoad  DL N34 0.00 -71.49 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N34 0.00 -71.49 0.00 0 0 0
+LoadPattern  NodalLoad  DL N35 0.00 -127.12 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N35 0.00 -127.12 0.00 0 0 0
+LoadPattern  NodalLoad  DL N36 0.00 -71.49 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N36 0.00 -71.49 0.00 0 0 0
+LoadPattern  NodalLoad  DL N37 0.00 -65.32 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N37 0.00 -65.32 0.00 0 0 0
+LoadPattern  NodalLoad  DL N38 0.00 -120.95 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N38 0.00 -120.95 0.00 0 0 0
+LoadPattern  NodalLoad  DL N39 0.00 -65.32 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N39 0.00 -65.32 0.00 0 0 0
+LoadPattern  NodalLoad  DL N40 0.00 -120.45 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N40 0.00 -120.45 0.00 0 0 0
+LoadPattern  NodalLoad  DL N41 0.00 -230.34 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N41 0.00 -230.34 0.00 0 0 0
+LoadPattern  NodalLoad  DL N42 0.00 -120.45 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N42 0.00 -120.45 0.00 0 0 0
+LoadPattern  NodalLoad  DL N43 0.00 -65.32 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N43 0.00 -65.32 0.00 0 0 0
+LoadPattern  NodalLoad  DL N44 0.00 -120.95 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N44 0.00 -120.95 0.00 0 0 0
+LoadPattern  NodalLoad  DL N45 0.00 -65.32 0.00 0 0 0
+GUI_LoadPattern  NodalLoad  DL N45 0.00 -65.32 0.00 0 0 0
+
+
+Constraint  Diaphragm  D1  M1F  N10  N11  N12  N13  N14  N15  N16  N17  N18  
+Constraint  Diaphragm  D2  M2F  N19  N20  N21  N22  N23  N24  N25  N26  N27  
+Constraint  Diaphragm  D3  M3F  N28  N29  N30  N31  N32  N33  N34  N35  N36  
+Constraint  Diaphragm  D4  M4F  N37  N38  N39  N40  N41  N42  N43  N44  N45  
+
+
+Element  BeamColumn   E1 N1 N10 400x400x40  0 1 1 0 0 0 0 0
+Element  BeamColumn   E2 N2 N11 400x400x40  0 1 1 0 0 0 0 0
+Element  BeamColumn   E3 N3 N12 400x400x40  0 1 1 0 0 0 0 0
+Element  BeamColumn   E4 N4 N13 400x400x40  0 1 1 0 0 0 0 0
+Element  BeamColumn   E5 N5 N14 400x400x50  0 1 1 0 0 0 0 0
+Element  BeamColumn   E6 N6 N15 400x400x40  0 1 1 0 0 0 0 0
+Element  BeamColumn   E7 N7 N16 400x400x40  0 1 1 0 0 0 0 0
+Element  BeamColumn   E8 N8 N17 400x400x40  0 1 1 0 0 0 0 0
+Element  BeamColumn   E9 N9 N18 400x400x40  0 1 1 0 0 0 0 0
+Element  BeamColumn   E10 N10 N19 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E11 N11 N20 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E12 N12 N21 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E13 N13 N22 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E14 N14 N23 400x400x50  0 1 1 0 0 0 0 0
+Element  BeamColumn   E15 N15 N24 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E16 N16 N25 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E17 N17 N26 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E18 N18 N27 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E19 N10 N13 375x250x12x28  0 1 1 0 0 0 0 0
+Element  BeamColumn   E20 N13 N16 375x250x12x28  0 1 1 0 0 0 0 0
+Element  BeamColumn   E21 N11 N14 400x300x16x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E22 N14 N17 400x300x16x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E23 N12 N15 375x250x12x28  0 1 1 0 0 0 0 0
+Element  BeamColumn   E24 N15 N18 375x250x12x28  0 1 1 0 0 0 0 0
+Element  BeamColumn   E25 N10 N11 375x250x12x28  0 1 1 0 0 0 0 0
+Element  BeamColumn   E26 N11 N12 375x250x12x28  0 1 1 0 0 0 0 0
+Element  BeamColumn   E27 N13 N14 400x300x16x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E28 N14 N15 400x300x16x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E29 N16 N17 375x250x12x28  0 1 1 0 0 0 0 0
+Element  BeamColumn   E30 N17 N18 375x250x12x28  0 1 1 0 0 0 0 0
+Element  BeamColumn   E31 N19 N28 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E32 N20 N29 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E33 N21 N30 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E34 N22 N31 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E35 N23 N32 400x400x50  0 1 1 0 0 0 0 0
+Element  BeamColumn   E36 N24 N33 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E37 N25 N34 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E38 N26 N35 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E39 N27 N36 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E40 N19 N22 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E41 N22 N25 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E42 N20 N23 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E43 N23 N26 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E44 N21 N24 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E45 N24 N27 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E46 N19 N20 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E47 N20 N21 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E48 N22 N23 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E49 N23 N24 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E50 N25 N26 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E51 N26 N27 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E52 N28 N37 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E53 N29 N38 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E54 N30 N39 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E55 N31 N40 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E56 N32 N41 400x400x50  0 1 1 0 0 0 0 0
+Element  BeamColumn   E57 N33 N42 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E58 N34 N43 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E59 N35 N44 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E60 N36 N45 375x375x36  0 1 1 0 0 0 0 0
+Element  BeamColumn   E61 N28 N31 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E62 N31 N34 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E63 N29 N32 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E64 N32 N35 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E65 N30 N33 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E66 N33 N36 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E67 N28 N29 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E68 N29 N30 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E69 N31 N32 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E70 N32 N33 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E71 N34 N35 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E72 N35 N36 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E73 N37 N40 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E74 N40 N43 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E75 N38 N41 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E76 N41 N44 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E77 N39 N42 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E78 N42 N45 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E79 N37 N38 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E80 N38 N39 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E81 N40 N41 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E82 N41 N42 400x250x12x32  0 1 1 0 0 0 0 0
+Element  BeamColumn   E83 N43 N44 375x250x12x25  0 1 1 0 0 0 0 0
+Element  BeamColumn   E84 N44 N45 375x250x12x25  0 1 1 0 0 0 0 0
+
+
+#StrongColumnWeakBeamRatio  N1  0.0000  0.0000 
+#StrongColumnWeakBeamRatio  N2  0.0000  0.0000 
+#StrongColumnWeakBeamRatio  N3  0.0000  0.0000 
+#StrongColumnWeakBeamRatio  N4  0.0000  0.0000 
+#StrongColumnWeakBeamRatio  N5  0.0000  0.0000 
+#StrongColumnWeakBeamRatio  N6  0.0000  0.0000 
+#StrongColumnWeakBeamRatio  N7  0.0000  0.0000 
+#StrongColumnWeakBeamRatio  N8  0.0000  0.0000 
+#StrongColumnWeakBeamRatio  N9  0.0000  0.0000 
+#StrongColumnWeakBeamRatio  N10  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N11  0.1933  0.3727 
+#StrongColumnWeakBeamRatio  N12  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N13  0.3727  0.1933 
+#StrongColumnWeakBeamRatio  N14  0.3727  0.3727 
+#StrongColumnWeakBeamRatio  N15  0.3727  0.1933 
+#StrongColumnWeakBeamRatio  N16  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N17  0.1933  0.3727 
+#StrongColumnWeakBeamRatio  N18  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N19  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N20  0.1933  0.3727 
+#StrongColumnWeakBeamRatio  N21  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N22  0.3727  0.1933 
+#StrongColumnWeakBeamRatio  N23  0.3727  0.3727 
+#StrongColumnWeakBeamRatio  N24  0.3727  0.1933 
+#StrongColumnWeakBeamRatio  N25  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N26  0.1933  0.3727 
+#StrongColumnWeakBeamRatio  N27  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N28  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N29  0.1933  0.3727 
+#StrongColumnWeakBeamRatio  N30  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N31  0.3727  0.1933 
+#StrongColumnWeakBeamRatio  N32  0.3727  0.3727 
+#StrongColumnWeakBeamRatio  N33  0.3727  0.1933 
+#StrongColumnWeakBeamRatio  N34  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N35  0.1933  0.3727 
+#StrongColumnWeakBeamRatio  N36  0.1933  0.1933 
+#StrongColumnWeakBeamRatio  N37  0.3727  0.3727 
+#StrongColumnWeakBeamRatio  N38  0.3727  0.6545 
+#StrongColumnWeakBeamRatio  N39  0.3727  0.3727 
+#StrongColumnWeakBeamRatio  N40  0.6545  0.3727 
+#StrongColumnWeakBeamRatio  N41  0.6545  0.6545 
+#StrongColumnWeakBeamRatio  N42  0.6545  0.3727 
+#StrongColumnWeakBeamRatio  N43  0.3727  0.3727 
+#StrongColumnWeakBeamRatio  N44  0.3727  0.6545 
+#StrongColumnWeakBeamRatio  N45  0.3727  0.3727 
+
+
+% MATERIAL DATA %
+Material  Bilinear steel 200 0.00 0.35 -0.35 0.3
+
+
+% SECTION DATA %
+GUI_Section I_SHAPE_SECTION 350x200x9x16 steel steel steel steel steel steel steel steel steel 0 350 200 16 9 200 16 
+GUI_SECTION_PROPERTY_FACTOR 350x200x9x16 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 350x200x9x16 0.615686274509804  0.8901960784313725  0.9607843137254902  
+Section  BCSection03 350x200x9x16 steel steel steel steel steel steel steel steel steel 0 9262.0 202744207.0 21352650.0 618360.0 1158538.0 213526.0 3150.0 5333.333333333334 
+
+GUI_Section I_SHAPE_SECTION 350x200x9x20 steel steel steel steel steel steel steel steel steel 0 350 200 20 9 200 20 
+GUI_SECTION_PROPERTY_FACTOR 350x200x9x20 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 350x200x9x20 0.5450980392156862  0.7686274509803922  0.9411764705882353  
+Section  BCSection03 350x200x9x20 steel steel steel steel steel steel steel steel steel 0 10790.0 240409910.00000003 26685490.0 1107290.0 1373770.0 266855.0 3150.0 6666.666666666667 
+
+GUI_Section I_SHAPE_SECTION 350x200x12x22 steel steel steel steel steel steel steel steel steel 0 350 200 22 12 200 22 
+GUI_SECTION_PROPERTY_FACTOR 350x200x12x22 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 350x200x12x22 0.47843137254901963  0.6470588235294118  0.9215686274509803  
+Section  BCSection03 350x200x12x22 steel steel steel steel steel steel steel steel steel 0 12472.0 265692340.0 29377390.0 1551090.0 1518241.0 293773.0 4200.0 7333.333333333334 
+
+GUI_Section I_SHAPE_SECTION 375x200x12x25 steel steel steel steel steel steel steel steel steel 0 375 200 25 12 200 25 
+GUI_SECTION_PROPERTY_FACTOR 375x200x12x25 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 375x200x12x25 0.4117647058823529  0.5254901960784314  0.9019607843137255  
+Section  BCSection03 375x200x12x25 steel steel steel steel steel steel steel steel steel 0 13900.0 341098949.99999994 33380130.0 2173880.0 1819194.0 333801.0 4500.0 8333.333333333334 
+
+GUI_Section I_SHAPE_SECTION 375x250x12x25 steel steel steel steel steel steel steel steel steel 0 375 250 25 12 250 25 
+GUI_SECTION_PROPERTY_FACTOR 375x250x12x25 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 375x250x12x25 0.34509803921568627  0.40784313725490196  0.8823529411764706  
+Section  BCSection03 375x250x12x25 steel steel steel steel steel steel steel steel steel 0 16400.0 417791660.0 65150959.99999999 2697730.0000000005 2228222.0 521207.0 4500.0 10416.666666666668 
+
+GUI_Section I_SHAPE_SECTION 375x250x12x28 steel steel steel steel steel steel steel steel steel 0 375 250 28 12 250 28 
+GUI_SECTION_PROPERTY_FACTOR 375x250x12x28 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 375x250x12x28 0.2784313725490196  0.28627450980392155  0.8627450980392157  
+Section  BCSection03 375x250x12x28 steel steel steel steel steel steel steel steel steel 0 17828.0 454807920.0 72962600.0 3670040.0 2425700.0 583700.0 4500.0 11666.666666666668 
+
+GUI_Section I_SHAPE_SECTION 400x250x12x32 steel steel steel steel steel steel steel steel steel 0 400 250 32 12 250 32 
+GUI_SECTION_PROPERTY_FACTOR 400x250x12x32 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 400x250x12x32 0.21176470588235294  0.16470588235294117  0.8431372549019608  
+Section  BCSection03 400x250x12x32 steel steel steel steel steel steel steel steel steel 0 20032.0 580994380.0 83381710.0 5322350.0 2904971.0 667053.0 4800.0 13333.333333333334 
+
+GUI_Section I_SHAPE_SECTION 400x250x16x36 steel steel steel steel steel steel steel steel steel 0 400 250 36 16 250 36 
+GUI_SECTION_PROPERTY_FACTOR 400x250x16x36 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 400x250x16x36 0.1450980392156863  0.047058823529411764  0.8274509803921568  
+Section  BCSection03 400x250x16x36 steel steel steel steel steel steel steel steel steel 0 23248.0 645226060.0 93861950.0 7748700.0 3226130.0 750895.0 6400.0 15000.0 
+
+GUI_Section I_SHAPE_SECTION 400x300x16x36 steel steel steel steel steel steel steel steel steel 0 400 300 36 16 300 36 
+GUI_SECTION_PROPERTY_FACTOR 400x300x16x36 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 400x300x16x36 0.6039215686274509  0.21176470588235294  0.7725490196078432  
+Section  BCSection03 400x300x16x36 steel steel steel steel steel steel steel steel steel 0 26848.0 764861260.0 162111950.0 9316550.0 3824306.0 1080746.0 6400.0 18000.0 
+
+GUI_Section BOX_SECTION 350x350x20 steel steel steel steel steel steel steel steel steel 0 350 350 20 20 
+GUI_SECTION_PROPERTY_FACTOR 350x350x20 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 350x350x20 0.9294117647058824  0.9607843137254902  0.3137254901960784  
+Section  BCSection03 350x350x20 steel steel steel steel steel steel steel steel steel 0 26400.0 480920000.0 480920000.0 742163000.0 2748114.0 2748114.0 14000.0 14000.0 
+
+GUI_Section BOX_SECTION 350x350x22 steel steel steel steel steel steel steel steel steel 0 350 350 22 22 
+GUI_SECTION_PROPERTY_FACTOR 350x350x22 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 350x350x22 0.8745098039215686  0.9254901960784314  0.2980392156862745  
+Section  BCSection03 350x350x22 steel steel steel steel steel steel steel steel steel 0 28864.0 519879119.99999994 519879119.99999994 804464000.0 2970737.0 2970737.0 15400.0 15400.0 
+
+GUI_Section BOX_SECTION 350x350x25 steel steel steel steel steel steel steel steel steel 0 350 350 25 25 
+GUI_SECTION_PROPERTY_FACTOR 350x350x25 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 350x350x25 0.8235294117647058  0.8901960784313725  0.28627450980392155  
+Section  BCSection03 350x350x25 steel steel steel steel steel steel steel steel steel 0 32500.0 575520830.0 575520830.0 892683000.0 3288690.0 3288690.0 17500.0 17500.0 
+
+GUI_Section BOX_SECTION 375x375x28 steel steel steel steel steel steel steel steel steel 0 375 375 28 28 
+GUI_SECTION_PROPERTY_FACTOR 375x375x28 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 375x375x28 0.7725490196078432  0.8549019607843137  0.27058823529411763  
+Section  BCSection03 375x375x28 steel steel steel steel steel steel steel steel steel 0 38864.0 785507450.0 785507450.0 1219290000.0 4186706.0 4186706.0 21000.0 21000.0 
+
+GUI_Section BOX_SECTION 375x375x32 steel steel steel steel steel steel steel steel steel 0 375 375 32 32 
+GUI_SECTION_PROPERTY_FACTOR 375x375x32 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 375x375x32 0.7215686274509804  0.8235294117647058  0.25882352941176473  
+Section  BCSection03 375x375x32 steel steel steel steel steel steel steel steel steel 0 43903.9 868369890.0 868369890.0 1355060000.0 4631306.0 4631306.0 24000.0 24000.0 
+
+GUI_Section BOX_SECTION 375x375x36 steel steel steel steel steel steel steel steel steel 0 375 375 36 36 
+GUI_SECTION_PROPERTY_FACTOR 375x375x36 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 375x375x36 0.6705882352941176  0.788235294117647  0.24313725490196078  
+Section  BCSection03 375x375x36 steel steel steel steel steel steel steel steel steel 0 48815.9 945541510.0 945541510.0 1482810000.0 5042888.0 5042888.0 27000.0 27000.0 
+
+GUI_Section BOX_SECTION 400x400x40 steel steel steel steel steel steel steel steel steel 0 400 400 40 40 
+GUI_SECTION_PROPERTY_FACTOR 400x400x40 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 400x400x40 0.6196078431372549  0.7529411764705882  0.23137254901960785  
+Section  BCSection03 400x400x40 steel steel steel steel steel steel steel steel steel 0 57600.0 1259519990.0 1259519990.0 1977570000.0 6297599.0 6297599.0 32000.0 32000.0 
+
+GUI_Section BOX_SECTION 400x400x45 steel steel steel steel steel steel steel steel steel 0 400 400 45 45 
+GUI_SECTION_PROPERTY_FACTOR 400x400x45 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 400x400x45 0.5686274509803921  0.7215686274509804  0.2196078431372549  
+Section  BCSection03 400x400x45 steel steel steel steel steel steel steel steel steel 0 63900.0 1363732500.0 1363732500.0 2153260000.0 6818662.0 6818662.0 36000.0 36000.0 
+
+GUI_Section BOX_SECTION 400x400x50 steel steel steel steel steel steel steel steel steel 0 400 400 50 50 
+GUI_SECTION_PROPERTY_FACTOR 400x400x50 1 1 1 1 1 1 1 1 
+GUI_SECTION_DISPLAY_COLOR 400x400x50 0.5176470588235295  0.6862745098039216  0.20392156862745098  
+Section  BCSection03 400x400x50 steel steel steel steel steel steel steel steel steel 0 70000.0 1458333330.0000002 1458333330.0000002 2313860000.0 7291666.0 7291666.0 40000.0 40000.0 
+
+
+
+GUI_LoadCase  GUI_AREA_LOAD_DL  DL
+GUI_AREA_LOAD_ASSIGNED_TYPE  BY_BEAN_SPAN_LOAD
+GUI_Output  OutFlag  10  10  0  2  2  10  10
+Output  OutFlag  10  10  0  2  2  10  10
+% RESPONSE HISTORY %
+STOP
