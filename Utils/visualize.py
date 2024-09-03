@@ -12,9 +12,6 @@ from sklearn.manifold import TSNE
 
 # https://stackoverflow.com/questions/31478077/how-to-make-two-markers-share-the-same-label-in-the-legend-using-matplotlib
 
-class AnyObject(object):
-    pass
-
 
 class data_handler(object):
     def legend_artist(self, legend, orig_handle, fontsize, handlebox):
@@ -45,7 +42,6 @@ def visualize_response(model, ckpt_dir, dataset, dataset_name, norm_dict, accura
         output, keeped_indexes = model(batch.x, batch.edge_index, batch.edge_attr, batch.batch, batch.ptr, batch.sampled_index, batch.ground_motions, sample_node=False)
         x, y = batch.x[keeped_indexes], batch.y[keeped_indexes]
     
-
     if response == "Acceleration_X":
         # normalized scale
         pred_norm = output[:, :, 0]
@@ -53,6 +49,14 @@ def visualize_response(model, ckpt_dir, dataset, dataset_name, norm_dict, accura
         # original scale
         pred = denormalize_acc(pred_norm, norm_dict)
         true = denormalize_acc(true_norm, norm_dict)
+    elif response == "Acceleration_Z":
+        # normalized scale
+        pred_norm = output[:, :, 1]
+        true_norm = y[:, :, 1]
+        # original scale
+        pred = denormalize_acc(pred_norm, norm_dict)
+        true = denormalize_acc(true_norm, norm_dict)
+
 
     elif response == "Velocity_X":
         # normalized scale
@@ -61,6 +65,14 @@ def visualize_response(model, ckpt_dir, dataset, dataset_name, norm_dict, accura
         # original scale
         pred = denormalize_vel(pred_norm, norm_dict)
         true = denormalize_vel(true_norm, norm_dict)
+    elif response == "Velocity_Z":
+        # normalized scale
+        pred_norm = output[:, :, 3]
+        true_norm = y[:, :, 3]
+        # original scale
+        pred = denormalize_vel(pred_norm, norm_dict)
+        true = denormalize_vel(true_norm, norm_dict)
+
 
     elif response == "Displacement_X":
         # normalized scale
@@ -69,7 +81,6 @@ def visualize_response(model, ckpt_dir, dataset, dataset_name, norm_dict, accura
         # original scale
         pred = denormalize_disp(pred_norm, norm_dict)
         true = denormalize_disp(true_norm, norm_dict)
-
     elif response == "Displacement_Z":
         # normalized scale
         pred_norm = output[:, :, 5]
@@ -78,59 +89,109 @@ def visualize_response(model, ckpt_dir, dataset, dataset_name, norm_dict, accura
         pred = denormalize_disp(pred_norm, norm_dict)
         true = denormalize_disp(true_norm, norm_dict)
 
-    elif response == "Moment_Z_Column":
-        # Display momentZ on y_n.
+
+    elif response == "Moment_Y_Column":
+        # Display momentY on y_n.
         # normalized scale
         pred_norm = output[:, :, 8]
         true_norm = y[:, :, 8]
         # original scale
-        pred = denormalize_moment(pred_norm, norm_dict)
-        true = denormalize_moment(true_norm, norm_dict)
-
-    elif response == "Moment_Z_Xbeam":
-        # Display momentZ on x_p.
+        pred = denormalize_momentY(pred_norm, norm_dict)
+        true = denormalize_momentY(true_norm, norm_dict)
+    elif response == "Moment_Y_Xbeam":
+        # Display momentY on x_p.
         # normalized scale
         pred_norm = output[:, :, 7]
         true_norm = y[:, :, 7]
         # original scale
-        pred = denormalize_moment(pred_norm, norm_dict)
-        true = denormalize_moment(true_norm, norm_dict)
-
-    elif response == "Moment_Z_Zbeam":
-        # Display momentZ on z_p.
+        pred = denormalize_momentY(pred_norm, norm_dict)
+        true = denormalize_momentY(true_norm, norm_dict)
+    elif response == "Moment_Y_Zbeam":
+        # Display momentY on z_p.
         # normalized scale
         pred_norm = output[:, :, 11]
         true_norm = y[:, :, 11]
         # original scale
-        pred = denormalize_moment(pred_norm, norm_dict)
-        true = denormalize_moment(true_norm, norm_dict)
+        pred = denormalize_momentY(pred_norm, norm_dict)
+        true = denormalize_momentY(true_norm, norm_dict)
 
-    elif response == "Shear_Y_Column":
-        # Display shearY on y_n.
+
+    elif response == "Moment_Z_Column":
+        # Display momentZ on y_n.
         # normalized scale
         pred_norm = output[:, :, 14]
         true_norm = y[:, :, 14]
         # original scale
-        pred = denormalize_shear(pred_norm, norm_dict)
-        true = denormalize_shear(true_norm, norm_dict)
-
-    elif response == "Shear_Z_Xbeam":
-        # Display shearY on x_p.
+        pred = denormalize_momentZ(pred_norm, norm_dict)
+        true = denormalize_momentZ(true_norm, norm_dict)
+    elif response == "Moment_Z_Xbeam":
+        # Display momentZ on x_p.
         # normalized scale
         pred_norm = output[:, :, 13]
         true_norm = y[:, :, 13]
         # original scale
-        pred = denormalize_shear(pred_norm, norm_dict)
-        true = denormalize_shear(true_norm, norm_dict)
-
-    elif response == "Shear_Z_Zbeam":
-        # Display shearY on z_p.
+        pred = denormalize_momentZ(pred_norm, norm_dict)
+        true = denormalize_momentZ(true_norm, norm_dict)
+    elif response == "Moment_Z_Zbeam":
+        # Display momentZ on z_p.
         # normalized scale
         pred_norm = output[:, :, 17]
         true_norm = y[:, :, 17]
         # original scale
-        pred = denormalize_shear(pred_norm, norm_dict)
-        true = denormalize_shear(true_norm, norm_dict)
+        pred = denormalize_momentZ(pred_norm, norm_dict)
+        true = denormalize_momentZ(true_norm, norm_dict)
+
+
+    elif response == "Shear_Y_Column":
+        # Display shearY on y_n.
+        # normalized scale
+        pred_norm = output[:, :, 20]
+        true_norm = y[:, :, 20]
+        # original scale
+        pred = denormalize_shearY(pred_norm, norm_dict)
+        true = denormalize_shearY(true_norm, norm_dict)
+    elif response == "Shear_Y_Xbeam":
+        # Display shearY on x_p.
+        # normalized scale
+        pred_norm = output[:, :, 19]
+        true_norm = y[:, :, 19]
+        # original scale
+        pred = denormalize_shearY(pred_norm, norm_dict)
+        true = denormalize_shearY(true_norm, norm_dict)
+    elif response == "Shear_Y_Zbeam":
+        # Display shearY on z_p.
+        # normalized scale
+        pred_norm = output[:, :, 23]
+        true_norm = y[:, :, 23]
+        # original scale
+        pred = denormalize_shearY(pred_norm, norm_dict)
+        true = denormalize_shearY(true_norm, norm_dict)
+
+    
+    elif response == "Shear_Z_Column":
+        # Display shearZ on y_n.
+        # normalized scale
+        pred_norm = output[:, :, 26]
+        true_norm = y[:, :, 26]
+        # original scale
+        pred = denormalize_shearZ(pred_norm, norm_dict)
+        true = denormalize_shearZ(true_norm, norm_dict)
+    elif response == "Shear_Z_Xbeam":
+        # Display shearZ on x_p.
+        # normalized scale
+        pred_norm = output[:, :, 25]
+        true_norm = y[:, :, 25]
+        # original scale
+        pred = denormalize_shearZ(pred_norm, norm_dict)
+        true = denormalize_shearZ(true_norm, norm_dict)
+    elif response == "Shear_Z_Zbeam":
+        # Display shearZ on z_p.
+        # normalized scale
+        pred_norm = output[:, :, 29]
+        true_norm = y[:, :, 29]
+        # original scale
+        pred = denormalize_shearZ(pred_norm, norm_dict)
+        true = denormalize_shearZ(true_norm, norm_dict)
 
 
     # num of grid(3) + grid index(3)
@@ -330,7 +391,6 @@ def visualize_ground_motion(ckpt_dir, dataset, dataset_name, norm_dict, index):
     save_dir = ckpt_dir / dataset_name / f"structure_{index}"  # /train/structure_0/
     save_dir.mkdir(parents=True, exist_ok=True)
 
-    
     device = "cuda"
     g = dataset[index]
     graph = g.clone().to(device)

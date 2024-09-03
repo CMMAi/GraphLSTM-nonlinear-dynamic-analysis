@@ -8,25 +8,31 @@ sys.path.append("../")
 from Models.losses import *
 
 
-def get_target_index(target):
+def get_target_index(target, neglect_beam_My_Sz=False):
     target_dict = {}
     y_start, y_finish = -1, -1
-    if('acc' in target):
+    if ('acc' in target):
         y_start = 0 
         y_finish = 2
         target_dict['acc'] = [0, 2]
-    if('vel' in target):
+    if ('vel' in target):
         y_finish = 4
         target_dict['vel'] = [2, 4]
-    if('disp' in target):
+    if ('disp' in target):
         y_finish = 6
         target_dict['disp'] = [4, 6]
-    if('Mz' in target):
+    if ('My' in target):
         y_finish = 12
-        target_dict['Mz'] = [6, 12]
-    if('Sy' in target):
+        target_dict['My'] = [8, 10] if neglect_beam_My_Sz else [6, 12]
+    if ('Mz' in target):
         y_finish = 18
-        target_dict['Sy'] = [12, 18]
+        target_dict['Mz'] = [12, 18]
+    if ('Sy' in target):
+        y_finish = 24
+        target_dict['Sy'] = [18, 24]
+    if ('Sz' in target):
+        y_finish = 30
+        target_dict['Sz'] = [26, 28] if neglect_beam_My_Sz else [24, 30]
     
     return y_start, y_finish, target_dict     
 
