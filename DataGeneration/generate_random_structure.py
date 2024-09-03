@@ -9,14 +9,14 @@ from structure import *
 import sections_tw, sections_usa
 
 
-# A table which correspond face to node feature's My face index
+# A table which correspond face to node feature's yielding moment face index
 FACE_HASH_TABLE = {
-    'x_n': 15,
-    'x_p': 17,
-    'y_n': 19,
-    'y_p': 21,
-    'z_n': 23,
-    'z_p': 25,
+    'x_n': 23,
+    'x_p': 25,
+    'y_n': 27,
+    'y_p': 29,
+    'z_n': 31,
+    'z_p': 33,
 }
 
 

@@ -18,16 +18,16 @@ structure_num   = 1000
 start_index     = 1
 
 
-# ground_motion_type: {ChiChi, World}
+# ground_motion_type: {ChiChi, World, World_processed}
 ground_motion_type = 'World_processed'
 
 # ground_motion_level: {BSE-1, BSE-2, mixed}
 ground_motion_level = 'BSE-1'
 
 # section_country: {USA, Taiwan}
-section_country = 'USA'
+section_country = 'Taiwan'
 
-# maximum_duration: {70sec, 100sec}
+# maximum_duration: {70 sec, 100 sec}
 maximum_duration = 70
 
 # prioritized: {None, thick, thin}
