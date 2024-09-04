@@ -53,6 +53,7 @@ class GroundMotionDataset(Dataset):
                     i, j = index//10, index%10
                     ground_motion_2[i, j] = float(line.split()[1])
             graph = torch.load(graph_path)
+            graph.path = folder_name
             graph.ground_motion_1 = ground_motion_1[:timesteps, :]
             graph.ground_motion_2 = ground_motion_2[:timesteps, :]
             

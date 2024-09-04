@@ -1,4 +1,4 @@
-import enum
+import json
 import matplotlib.pyplot as plt
 # import seaborn as sns
 import numpy as np
@@ -29,7 +29,6 @@ def plot_learningCurve(accuracy_record, ckpt_dir, title=None):
     plt.ylim([-0.1, 1.05])
     plt.title(title)
     plt.savefig(ckpt_dir / "learningCurve.png")
-    # plt.show()
     plt.close()
 
 
@@ -49,22 +48,24 @@ def plot_lossCurve(loss_record, ckpt_dir, title=None):
     # plt.ylim([-0.01, 0.1])
     plt.title(title)
     plt.savefig(ckpt_dir / "lossCurve.png")
-    # plt.show()
     plt.close()
 
 
 
     
 
-def plot_target_accuracy(target_accuracy_record, epoch_num, ckpt_dir, evaluation):
+def plot_target_accuracy(target_accuracy_record, epoch_num, neglect_beam_My_Sz, ckpt_dir, evaluation):
     epochs = list(range(1, epoch_num+1))
-
     for i, name in enumerate(['Training', 'Validation', 'Testing']):
         plt.figure(figsize=(8, 6))
         plt.rcParams['font.size'] = '14'
         for target in target_accuracy_record.keys():
             acc = target_accuracy_record[target][i]
-            plt.plot(epochs, acc, label=f"{target}: {np.max(acc):.4f}")
+            if (target == 'My' or target == 'Sz') and neglect_beam_My_Sz:
+                label = f"{target}: {np.max(acc):.4f} (neglect beam)"
+            else:
+                label = f"{target}: {np.max(acc):.4f}"
+            plt.plot(epochs, acc, label=label)
         plt.legend()
         plt.grid()
         plt.xlabel("Epochs")
@@ -78,7 +79,6 @@ def plot_target_accuracy(target_accuracy_record, epoch_num, ckpt_dir, evaluation
 
 def plot_plastic_hinge_accuracy(record, ckpt_dir, specific_location=False):
     epochs = np.arange(1, record.shape[1]+1)
-
     for i, t_v in enumerate(['Train', 'Valid', 'Test']):
         node_level_precision = record[i, :, 0] / (record[i, :, 0] + record[i, :, 1] + 1)
         node_level_recall = record[i, :, 0] / (record[i, :, 0] + record[i, :, 2] + 1)  # +1 in case division problem
@@ -114,7 +114,7 @@ def plot_plastic_hinge_accuracy(record, ckpt_dir, specific_location=False):
 
 
 @torch.no_grad()
-def plot_test_accuracy_distribution(test_dataset, model, ckpt_dir):
+def plot_test_accuracy_distribution(test_dataset, model, neglect_beam_My_Sz, ckpt_dir):
     R2_per_structure = []
     device = "cuda"
     model.eval()
@@ -126,8 +126,18 @@ def plot_test_accuracy_distribution(test_dataset, model, ckpt_dir):
 
         output, keeped_indexes = model(graph.x, graph.edge_index, graph.edge_attr, graph.batch, graph.ptr, graph.sampled_index, graph.ground_motions, sample_node=False)
         x, y = graph.x[keeped_indexes], graph.y[keeped_indexes]
-        R2_acc = R2_score(output, y).cpu().numpy()
-        R2_per_structure.append(R2_acc)
+
+        mask = torch.ones(y.shape, dtype=bool)
+        if neglect_beam_My_Sz:
+            mask[:, :, (6,7,10,11)] = False    # neglect beam's MomentY
+            mask[:, :, (24,25,28,29)] = False  # neglect beam's ShearZ
+        mask_y = y[mask].reshape(y.shape[0], y.shape[1], -1)
+        mask_output = output[mask].reshape(output.shape[0], output.shape[1], -1)
+
+        R2_acc = R2_score(mask_output, mask_y).cpu().numpy()
+        R2_per_structure.append(float(R2_acc))
+
+    with open(ckpt_dir / "Records" / "inference_overall_acc_record.txt", "w") as f: json.dump(R2_per_structure, f)
 
     # find the highest and lowest R2 case
     R2_per_structure = np.array(R2_per_structure)

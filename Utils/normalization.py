@@ -33,7 +33,6 @@ def get_norm_dict(dataset, norm_dict):
     max_modal_shape = torch.max(torch.abs(x[:, 14:23])).item()
     norm_dict['modal_shape'] = [min_modal_shape, max_modal_shape]
 
-
     min_length = 0
     max_length = torch.max(torch.abs(x[:, list(range(23, 35, 2))])).item()
     norm_dict['elem_length'] = [min_length, max_length]
@@ -51,15 +50,23 @@ def get_norm_dict(dataset, norm_dict):
     min_disp = 0
     max_disp = torch.max(torch.abs(y[:, :, 4:6])).item()
     norm_dict['disp'] = [min_disp, max_disp]
+
+    min_momentY = 0
+    max_momentY = torch.max(torch.abs(y[:, :, 6:12])).item()
+    norm_dict['momentY'] = [min_momentY, max_momentY]
     
     # Here normalize response momentZ with each section's My_z (yielding moment)
-    min_moment = 0
-    max_moment = torch.max(torch.max(torch.abs(y[:, :, 6:12])), torch.max(torch.abs(x[:, list(range(24, 35, 2))]))).item()
-    norm_dict['moment'] = [min_moment, max_moment]
+    min_momentZ = 0
+    max_momentZ = torch.max(torch.max(torch.abs(y[:, :, 12:18])), torch.max(torch.abs(x[:, list(range(24, 35, 2))]))).item()
+    norm_dict['momentZ'] = [min_momentZ, max_momentZ]
 
-    min_shear = 0
-    max_shear = torch.max(torch.abs(y[:, :, 12:18])).item()
-    norm_dict['shear'] = [min_shear, max_shear]
+    min_shearY = 0
+    max_shearY = torch.max(torch.abs(y[:, :, 18:24])).item()
+    norm_dict['shearY'] = [min_shearY, max_shearY]
+
+    min_shearZ = 0
+    max_shearZ = torch.max(torch.abs(y[:, :, 24:30])).item()
+    norm_dict['shearZ'] = [min_shearZ, max_shearZ]
     
     return norm_dict
 
@@ -74,18 +81,19 @@ def normalize(original_graph, norm_dict):
     graph.x[:, 3:6] = (graph.x[:, 3:6] - norm_dict['coord'][0]) / (norm_dict['coord'][1] - norm_dict['coord'][0])
     graph.x[:, 11:14] = (graph.x[:, 11:14] - norm_dict['period'][0]) / (norm_dict['period'][1] - norm_dict['period'][0])
     graph.x[:, 14:23] = (graph.x[:, 14:23] - norm_dict['modal_shape'][0]) / (norm_dict['modal_shape'][1] - norm_dict['modal_shape'][0])
-   
     graph.x[:, list(range(23, 35, 2))] = (graph.x[:, list(range(23, 35, 2))] - norm_dict['elem_length'][0]) / (norm_dict['elem_length'][1] - norm_dict['elem_length'][0])
-    graph.x[:, list(range(24, 35, 2))] = (graph.x[:, list(range(24, 35, 2))] - norm_dict['moment'][0]) / (norm_dict['moment'][1] - norm_dict['moment'][0])
+    graph.x[:, list(range(24, 35, 2))] = (graph.x[:, list(range(24, 35, 2))] - norm_dict['momentZ'][0]) / (norm_dict['momentZ'][1] - norm_dict['momentZ'][0])
 
     graph.y[:, :, 0:2] = (graph.y[:, :, 0:2] - norm_dict['acc'][0]) / (norm_dict['acc'][1] - norm_dict['acc'][0])
     graph.y[:, :, 2:4] = (graph.y[:, :, 2:4] - norm_dict['vel'][0]) / (norm_dict['vel'][1] - norm_dict['vel'][0])
     graph.y[:, :, 4:6] = (graph.y[:, :, 4:6] - norm_dict['disp'][0]) / (norm_dict['disp'][1] - norm_dict['disp'][0])
-    graph.y[:, :, 6:12] = (graph.y[:, :, 6:12] - norm_dict['moment'][0]) / (norm_dict['moment'][1] - norm_dict['moment'][0])
-    graph.y[:, :, 12:18] = (graph.y[:, :, 12:18] - norm_dict['shear'][0]) / (norm_dict['shear'][1] - norm_dict['shear'][0])
+    graph.y[:, :, 6:12] = (graph.y[:, :, 6:12] - norm_dict['momentY'][0]) / (norm_dict['momentY'][1] - norm_dict['momentY'][0])
+    graph.y[:, :, 12:18] = (graph.y[:, :, 12:18] - norm_dict['momentZ'][0]) / (norm_dict['momentZ'][1] - norm_dict['momentZ'][0])
+    graph.y[:, :, 18:24] = (graph.y[:, :, 18:24] - norm_dict['shearY'][0]) / (norm_dict['shearY'][1] - norm_dict['shearY'][0])
+    graph.y[:, :, 24:30] = (graph.y[:, :, 24:30] - norm_dict['shearZ'][0]) / (norm_dict['shearZ'][1] - norm_dict['shearZ'][0])
 
     graph.edge_attr[:, 0] = (graph.edge_attr[:, 0] - norm_dict['elem_length'][0]) / (norm_dict['elem_length'][1] - norm_dict['elem_length'][0])
-    graph.edge_attr[:, 3] = (graph.edge_attr[:, 3] - norm_dict['moment'][0]) / (norm_dict['moment'][1] - norm_dict['moment'][0])
+    graph.edge_attr[:, 3] = (graph.edge_attr[:, 3] - norm_dict['momentZ'][0]) / (norm_dict['momentZ'][1] - norm_dict['momentZ'][0])
 
     gm_X_direction = graph.gm_X_name.split('_')[-1].replace('.txt', '')
     if gm_X_direction == 'FN':
@@ -102,7 +110,7 @@ def normalize(original_graph, norm_dict):
     timesteps = graph.ground_motions.shape[1]
     graph.y = graph.y[:, :timesteps, :]
     assert graph.x.shape[1] == 35
-    assert graph.y.shape[2] == 18
+    assert graph.y.shape[2] == 30
 
     return graph
 
@@ -221,14 +229,12 @@ def normalize_coord(coord, norm_dict):
 # denormalize
 def denormalize(norm_graph, norm_dict):
     graph = deepcopy(norm_graph)
-
     graph[:, :3] = graph[:, :3] * (norm_dict['grid_num'][1] - norm_dict['grid_num'][0]) + norm_dict['grid_num'][0]
     graph[:, 3:6] = graph[:, 3:6] * (norm_dict['coord'][1] - norm_dict['coord'][0]) + norm_dict['coord'][0]
     graph[:, 11:14] = graph[:, 11:14] * (norm_dict['period'][1] - norm_dict['period'][0]) + norm_dict['period'][0]
     graph[:, 14:23] = graph[:, 14:23] * (norm_dict['modal_shape'][1] - norm_dict['modal_shape'][0]) + norm_dict['modal_shape'][0]
     graph[:, list(range(23, 35, 2))] = graph[:, list(range(23, 35, 2))] * (norm_dict['elem_length'][1] - norm_dict['elem_length'][0]) + norm_dict['elem_length'][0]
-    graph[:, list(range(24, 35, 2))] = graph[:, list(range(24, 35, 2))] * (norm_dict['moment'][1] - norm_dict['moment'][0]) + norm_dict['moment'][0]
-
+    graph[:, list(range(24, 35, 2))] = graph[:, list(range(24, 35, 2))] * (norm_dict['momentZ'][1] - norm_dict['momentZ'][0]) + norm_dict['momentZ'][0]
     return graph
   
 
@@ -265,16 +271,24 @@ def denormalize_disp(norm_disp, norm_dict):
     disp = disp * (norm_dict['disp'][1] - norm_dict['disp'][0]) + norm_dict['disp'][0]
     return disp
 
-def denormalize_moment(norm_moment, norm_dict):
-    moment = deepcopy(norm_moment)
-    moment = moment * (norm_dict['moment'][1] - norm_dict['moment'][0]) + norm_dict['moment'][0]
-    return moment
+def denormalize_momentY(norm_momentY, norm_dict):
+    momentY = deepcopy(norm_momentY)
+    momentY = momentY * (norm_dict['momentY'][1] - norm_dict['momentY'][0]) + norm_dict['momentY'][0]
+    return momentY
 
-def denormalize_shear(norm_shear, norm_dict):
-    shear = deepcopy(norm_shear)
-    shear = shear * (norm_dict['shear'][1] - norm_dict['shear'][0]) + norm_dict['shear'][0]
-    return shear
+def denormalize_momentZ(norm_momentZ, norm_dict):
+    momentZ = deepcopy(norm_momentZ)
+    momentZ = momentZ * (norm_dict['momentZ'][1] - norm_dict['momentZ'][0]) + norm_dict['momentZ'][0]
+    return momentZ
 
+def denormalize_shearY(norm_shearY, norm_dict):
+    shearY = deepcopy(norm_shearY)
+    shearY = shearY * (norm_dict['shearY'][1] - norm_dict['shearY'][0]) + norm_dict['shearY'][0]
+    return shearY
 
+def denormalize_shearZ(norm_shearZ, norm_dict):
+    shearZ = deepcopy(norm_shearZ)
+    shearZ = shearZ * (norm_dict['shearZ'][1] - norm_dict['shearZ'][0]) + norm_dict['shearZ'][0]
+    return shearZ
 
 

@@ -18,16 +18,16 @@ structure_num   = 1000
 start_index     = 1
 
 
-# ground_motion_type: {ChiChi, World}
+# ground_motion_type: {ChiChi, World, World_processed}
 ground_motion_type = 'World_processed'
 
 # ground_motion_level: {BSE-1, BSE-2, mixed}
 ground_motion_level = 'BSE-1'
 
 # section_country: {USA, Taiwan}
-section_country = 'USA'
+section_country = 'Taiwan'
 
-# maximum_duration: {70sec, 100sec}
+# maximum_duration: {70 sec, 100 sec}
 maximum_duration = 70
 
 # prioritized: {None, thick, thin}
@@ -138,22 +138,21 @@ if __name__ == '__main__':
     check_path(working_dir)
 
     # 2-1. Generate modal analysis and structure input file
-    # 2-2. Run modal analysis
-    # 2-3. Set alpha, beta to structure.ipt
-    # generate_random_structure.generate_random_structure(target_dir=working_dir, structure_num=structure_num, start_index=start_index,
-    #                                                     ground_motion_type=ground_motion_type, ground_motion_level=ground_motion_level, 
-    #                                                     maximum_duration=maximum_duration, section_country=section_country,
-    #                                                     prioritized=prioritized)
-    # run_pisa_all(analysis="modal")
-    # make_file.set_Rayleigh_coeff(target_dir=working_dir, structure_num=structure_num, start_index=start_index,
-    #                              ground_motion_type=ground_motion_type)
+    generate_random_structure.generate_random_structure(working_dir, structure_num, start_index,
+                                                        ground_motion_type, ground_motion_level, 
+                                                        maximum_duration, section_country, prioritized)
 
+    # 2-2. Run modal analysis
+    run_pisa_all(analysis="modal")
+
+    # 2-3. Set alpha, beta to structure.ipt
+    make_file.set_Rayleigh_coeff(working_dir, structure_num, start_index, ground_motion_type)
 
     # 3. After setting rayleigh, run dynamic analysis
-    # run_pisa_all(analysis="structure")
+    run_pisa_all(analysis="structure")
 
     # 4. Generate graph
-    generate_structural_graph.generate_graph_NodeAsNode(working_dir, start_index=start_index, section_country=section_country)
+    generate_structural_graph.generate_graph_NodeAsNode(working_dir, start_index, section_country)
     
     
 

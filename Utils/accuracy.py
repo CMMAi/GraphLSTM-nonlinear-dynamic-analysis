@@ -42,19 +42,19 @@ class PlasticHingeClassifier(nn.Module):
         self.Myield_end_index = 24 + (6 - 1) * self.section_info_dim + 1
         self.Myield_yn_index = 28
         self.Myield_yp_index = 30
-        self.output_start_index = 6
-        self.output_end_index = 12 
-        self.output_yn_index = 8
-        self.output_yp_index = 9
+        self.output_start_index = 12  # (Mz, Sy): 6   --> (My, Mz, Sy, Sz): 12
+        self.output_end_index = 18    # (Mz, Sy): 12  --> (My, Mz, Sy, Sz): 18 
+        self.output_yn_index = 14     # (Mz, Sy): 8   --> (My, Mz, Sy, Sz): 14
+        self.output_yp_index = 15     # (Mz, Sy): 9   --> (My, Mz, Sy, Sz): 15
         self.Hz = 20
         self.yield_factor = yield_factor
-        self.section_accuracy_Mz = [0, 0, 0, 0]     # [TP, FP, FN, TN]
+        self.section_accuracy_Mz = [0, 0, 0, 0]  # [TP, FP, FN, TN]
 
 
     def get_accuracy_and_reset(self, record_Mz, epoch, t_v=0):
         result_Mz = copy.deepcopy(self.section_accuracy_Mz)
         if record_Mz is not None:
-            record_Mz[t_v, epoch, 0:4] = self.section_accuracy_Mz
+            record_Mz[t_v, epoch, 0:4] = result_Mz
         self.section_accuracy_Mz = [0, 0, 0, 0]
         return result_Mz, record_Mz
 
@@ -82,8 +82,8 @@ class PlasticHingeClassifier(nn.Module):
         else:
             # node_out, node_y: [node_num in a mini-batch, output dimension]
             condition_not_zero = (x[:, self.Myield_start_index : self.Myield_end_index : self.section_info_dim] != 0)
-            condition_real = (torch.max(node_y[:, :, 2:8].abs(), dim=1)[0] >= self.yield_factor * x[:, self.Myield_start_index : self.Myield_end_index : self.section_info_dim])
-            condition_pred = (torch.max(node_out[:, :, 2:8].abs(), dim=1)[0] >= self.yield_factor * x[:, self.Myield_start_index : self.Myield_end_index : self.section_info_dim])
+            condition_real = (torch.max(node_y[:, :, self.output_start_index : self.output_end_index].abs(), dim=1)[0] >= self.yield_factor * x[:, self.Myield_start_index : self.Myield_end_index : self.section_info_dim])
+            condition_pred = (torch.max(node_out[:, :, self.output_start_index : self.output_end_index].abs(), dim=1)[0] >= self.yield_factor * x[:, self.Myield_start_index : self.Myield_end_index : self.section_info_dim])
         
         
         plastic_hinge_real = torch.logical_and(condition_real, condition_not_zero)
@@ -126,7 +126,7 @@ if __name__ == '__main__':
     pred = torch.tensor([[3, 5, 5, 6, 8],
                          [10, 4, 2, 1, 5],
                          [22, 4, 7, 2, 1]])
-    print(peak_rel_acc(pred, y))
+    #print(peak_rel_acc(pred, y))
 
 
 
